@@ -8,4 +8,5 @@
 | Sep-Dic '24 | Inteligencia Artificial y Aprendizaje Automático | Dr. Luis Eduardo Falcón Morales  | 98           |
 | Sep-Dic '24 | Soluciones con Aplicación de Tecnología          | Dra. Ma. Valentina Narváez Terán | 98.25        |
 | Abr-Jun '25 | Procesamiento de Lenguaje Natural                | Dr. Luis Eduardo Falcón Morales  | 100          |
-| Jul-Ago '25 | Fintech e Innovación Digital en Finanzas         | Marie-Ève Malette                |              |
+| Jul-Ago '25 | Fintech e Innovación Digital en Finanzas         | Marie-Ève Malette                | 98.2         |
+| Sep-Nov '25 | Internet de las cosas y redes de sensores        | Dr. Sergio Camacho León          | 96.36        |
