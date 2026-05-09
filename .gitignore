@@ -3,5 +3,6 @@
 .env
 
 # Archivos pesados
-metodos-avanzados-machine-learning/01b-actividad-en-equipo/asl_data/*
-metodos-avanzados-machine-learning/01a-multilayer-fully-connected-network/mnist_raw/*
+metodos-avanzados-machine-learning/asl_data/*
+metodos-avanzados-machine-learning/mnist_raw/*
+metodos-avanzados-machine-learning/*/data/*
