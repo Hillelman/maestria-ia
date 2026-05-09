@@ -1,6 +1,7 @@
 .git/
 .vscode/
 .env
+.DS_Store
 
 # Archivos pesados
 metodos-avanzados-machine-learning/asl_data/*

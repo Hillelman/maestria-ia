@@ -1,40 +1,48 @@
 #include <iostream>
 #include <omp.h>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-using namespace std;
-const int SIZE = 1000000;
 
-void llenarArreglo(vector<int>& arr) {
-    for (int i = 0; i < SIZE; ++i) {
-        arr[i] = rand() % 100; // Números aleatorios entre 0 y 99
+#define N 100000
+#define chunk 10000
+#define mostrar 15
+
+void imprimeArreglo(float *d);
+
+int main()
+{
+    std::cout << "Sumando Arreglos en Paralelo! " << N << " elementos\n";
+    float a[N], b[N], c[N];
+    int i;
+
+    for (i = 0; i < N; i++)
+    {
+        a[i] = i * 10;
+        b[i] = (i + 3) * 3.7;
     }
+
+    int pedazos = chunk;
+
+    #pragma omp parallel for \
+        shared(a, b, c, pedazos) private(i) \
+        schedule(static, pedazos)
+    for (i = 0; i < N; i++)
+        c[i] = a[i] + b[i];
+
+    std::cout << "Imprimiendo los primeros " << mostrar
+              << " valores del arreglo a: " << std::endl;
+    imprimeArreglo(a);
+
+    std::cout << "Imprimiendo los primeros " << mostrar
+              << " valores del arreglo b: " << std::endl;
+    imprimeArreglo(b);
+
+    std::cout << "Imprimiendo los primeros " << mostrar
+              << " valores del arreglo c: " << std::endl;
+    imprimeArreglo(c);
 }
 
-void sumarArreglos(vector<int>& arr1, vector<int>& arr2, vector<int>& resultado) {
-    #pragma omp parallel for num_threads(2)
-    for (int i = 0; i < SIZE; ++i) {
-        resultado[i] = arr1[i] + arr2[i];
-    }
-}
-
-int main() {
-    srand(static_cast<unsigned int>(time(0))); // Semilla para números aleatorios
-
-    vector<int> arreglo1(SIZE);
-    vector<int> arreglo2(SIZE);
-    vector<int> resultado(SIZE);
-
-    llenarArreglo(arreglo1);
-    llenarArreglo(arreglo2);
-    sumarArreglos(arreglo1, arreglo2, resultado);
-
-    cout << "Total de elementos: " << SIZE << "\n" << endl;
-    cout << "Primeros 10 resultados de la suma:\n" << endl;
-    for (int i = 0; i < 10; ++i) {
-        cout << arreglo1[i] << " + " << arreglo2[i] << " = " << resultado[i] << endl;
-    }
-
-    return 0;
+void imprimeArreglo(float *d)
+{
+    for (int x = 0; x < mostrar; x++)
+        std::cout << d[x] << " - ";
+    std::cout << std::endl;
 }
